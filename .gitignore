@@ -8,3 +8,4 @@ dist
 build
 venv
 .vscode
+__pycache__
