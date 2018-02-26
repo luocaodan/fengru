@@ -1,5 +1,6 @@
 from flask import Flask, render_template, jsonify, request
 import sortAnswers
+import spider
 import json
 
 app = Flask(__name__)
@@ -33,6 +34,23 @@ def api_sort():
         res = sortAnswers.make_answers(q, a)
         return jsonify(str(res))
     return render_template('search.html')
-    
+
+@app.route("/api/get_answers", methods=["GET", "POST"])
+def api_get_answer():
+    '''
+    def test():
+        data = {}
+        data['question'] = '["HOW AFRICAN AMERICANS WERE IMMIGRATED TO THE US"]'
+        r = requests.post('http://127.0.0.1:5000/api/get_answers', data=data)
+        print r.text
+    '''
+    if request.method == 'POST':
+        print(request.form['question'])
+        q = json.loads(request.form['question'])
+        a = spider.search_answer(q)
+        res = sortAnswers.make_answers(q, a)
+        return jsonify(res)
+    return render_template('search.html')
+
 if __name__ == "__main__":
     app.run(debug=True)

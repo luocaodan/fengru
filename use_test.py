@@ -1,8 +1,5 @@
-from sortAnswers import sort_answers
+import spider
 
-sort_answers('question.txt', 'answer.txt')
-print("---------------------")
-sort_answers('question.txt', 'answer.txt')
-print("---------------------")
-sort_answers('question.txt', 'answer.txt')
+test_answer = spider.search_answer("How to map a continent or land")
+print(test_answer)
 
