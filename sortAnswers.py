@@ -475,20 +475,17 @@ def sort_answers(ques_path, ans_path):
         print('Thumb %s: %s'%(index[i], a[order_index[i]]))
 
 def make_answers(q, a):
+    res = []
     test_sentence, thread = make_it_batch(q, a)
     sentence_pred = predict_for_show(model, test_sentence)
     pred_array = sentence_pred[0]
     order = pred_array[0]
-    print('The question: %s'%q[0])
-    print('The answer order is: ', order)
     final_order = np.argsort(np.argsort(order[:thread]))
-    print('The final order is (without None answers): ', final_order)
     order_index = np.argsort(final_order)
-    print('A few answers:')
-    index = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten']
     for i in range(thread):
-        print('Thumb %s: %s'%(index[i], a[order_index[i]]))
-    return final_order
+        #print('Thumb %s: %s'%(index[i], a[order_index[i]]))
+        res.append(a[order_index[i]])
+    return res
 
 # In[29]:
 
