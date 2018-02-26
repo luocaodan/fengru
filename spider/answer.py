@@ -1,3 +1,9 @@
+"""
+    use method search_answer(question) to get answer(list)
+    >>> from spider.answer import search_answer
+    >>> print(search_answer("hahaha"))
+"""
+
 import requests
 import threading
 
