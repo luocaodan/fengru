@@ -143,3 +143,23 @@
     font-size: 16px;
     float: left;
 }
+
+#answers {
+    width: 700px;
+    margin: 100px 60px;
+}
+
+.answer {
+   border-bottom: 1px solid #959fa3;
+   padding: 30px;
+}
+
+.num {
+    text-align: center;
+    width: 25px;
+    height: 25px;
+    padding: 3px 4px;
+    background-color: grey;
+    border-radius: 50%;
+    font-size: 18px;
+}

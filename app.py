@@ -46,8 +46,9 @@ def api_get_answer():
     '''
     if request.method == 'POST':
         print(request.form['question'])
-        q = json.loads(request.form['question'])
+        q = request.form['question']
         a = spider.search_answer(q)
+        q = [q]
         res = sortAnswers.make_answers(q, a)
         return jsonify(res)
     return render_template('search.html')

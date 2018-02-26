@@ -3,18 +3,44 @@
         <meta charset="utf-8">
         <link href="/static/css/bootstrap.min.css" rel="stylesheet">
         <link href="/static/css/mystyle.css" rel="stylesheet">
+        <script src="/static/js/jquery.min.js"></script>
         <title>搜索</title>
         
     </head>
 
+    <script>
+        function changePos() {
+            $("#search").css({
+                "top": "10px",
+                "left": "340px"
+            });
+        }
+
+        function search() {
+            changePos();
+            $("#answers").empty();
+            $("#answers").show();
+            $.post("/api/get_answers", {"question": $("form input").val()},
+                function(data) {
+                    console.log(data);
+                    for(var i = 0;i < data.length;i++) {
+                        $("#answers").append("<div class=\"answer\"><span class=\"num\">"+(i+1)+"</span>"+data[i]+"</div>")
+                    }
+                }, "json");
+        }
+    </script>
+
     
     <body>
         <div>
-            <div class="search-form">
+            <div id="search" class="search-form">
                 <form role="form" method="post">
-                    <input id="username" type="text" class="search-input">
-                    <button type="submit" class="search-btn">搜索</button>
+                    <input id="username" onkeydown="changePos()" type="text" class="search-input">
+                    <button type="button" onclick="search()" class="search-btn">搜索</button>
                 </form>
+            </div>
+            <div id="answers" style="display:none">
+                
             </div>
         </div>
     </body>
