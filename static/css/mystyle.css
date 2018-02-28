@@ -162,4 +162,15 @@
     border: 2px solid #25c6ff;
     border-radius: 100%;
     font-size: 18px;
+    margin: 10px;
+}
+
+body {
+    background-image: url('/static/image/(2).jpg');
+    background-size: cover;
+    -webkit-background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-color: #3c4652;
 }

@@ -13,7 +13,7 @@ answers = []
 
 def search_answer(question):
     search_yahoo(question)
-    search_stackoverflow(question)
+    #search_stackoverflow(question)
     return answers
 
 def search_yahoo(question):
