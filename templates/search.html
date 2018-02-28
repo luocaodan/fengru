@@ -12,7 +12,7 @@
         function changePos() {
             $("#search").css({
                 "top": "10px",
-                "left": "340px"
+                "left": "400px"
             });
         }
 
@@ -20,7 +20,7 @@
             changePos();
             $("#answers").empty();
             $("#answers").show();
-            $.post("/api/get_answers", {"question": $("form input").val()},
+            $.post("/api/get_answers", {"question": $("#search input").val()},
                 function(data) {
                     console.log(data);
                     for(var i = 0;i < data.length;i++) {
@@ -34,10 +34,8 @@
     <body>
         <div>
             <div id="search" class="search-form">
-                <form role="form" method="post">
-                    <input id="username" onkeydown="changePos()" type="text" class="search-input">
-                    <button type="button" onclick="search()" class="search-btn">搜索</button>
-                </form>
+                <input onkeydown="changePos()" type="text" class="search-input">
+                <button type="button" onclick="search()" class="search-btn">搜索</button>
             </div>
             <div id="answers" style="display:none">
                 
