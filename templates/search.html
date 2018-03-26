@@ -20,6 +20,7 @@
             changePos();
             $("#answers").empty();
             $("#answers").show();
+            console.log($("#search input").val());
             $.post("/api/get_answers", {"question": $("#search input").val()},
                 function(data) {
                     console.log(data);

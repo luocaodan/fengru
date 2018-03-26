@@ -48,7 +48,10 @@ def api_get_answer():
         print(request.form['question'])
         q = request.form['question']
         a = spider.search_answer(q)
+        while len(a) < 10:
+            a.append('None')
         q = [q]
+        print(a)
         res = sortAnswers.make_answers(q, a)
         return jsonify(res)
     return render_template('search.html')

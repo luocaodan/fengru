@@ -12,6 +12,8 @@ answers = []
 
 
 def search_answer(question):
+    global answers
+    answers = []
     search_yahoo(question)
     #search_stackoverflow(question)
     return answers
@@ -48,14 +50,13 @@ def multi_thread_crawl(questions, answer_pattern):
 
 
 def extract_answer(url, answer_pattern):
+    global answers
     if len(answers) > 10:
         return
     answer = re_match(url, answer_pattern)
     lock.acquire()
-    try:
-        answers.extend(answer)
-    finally:
-        lock.release()
+    answers += answer
+    lock.release()
 
 
 def re_match(url, pattern, payload=None):
